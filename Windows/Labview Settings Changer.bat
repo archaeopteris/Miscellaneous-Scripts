@@ -11,23 +11,23 @@ echo
 SET /P userInput=Do you want to continue? Press 'y' to continue or 'n' to exit...
 if %userInput% == n (exit)
 
-@ Move to Labview Directory
-cd "C:\Program Files (x86)\National Instruments\LabVIEW 2015"
+rem Move to Labview Directory
+cd "C:\Program Files (x86)\National Instruments\LabVIEW 2018"
 
-@ Create a temporary clear file
+rem Create a temporary clear file
 break>labview_temp.ini
 
-@ Clear the original labview settings file from specified lines
-@ Write the output to temporary file
+rem Clear the original labview settings file from specified lines
+rem Write the output to temporary file
 findstr /V "autoLayoutBlockPaddingX  autoLayoutBlockPaddingY autoLayoutWirePaddingX autoLayoutWirePaddingY autoLayoutFixControls autoLayoutFixIndicators" labview.ini >> labview_temp.ini
 
-@ Delete the original settings file
+rem Delete the original settings file
 del labview.ini
 
-@ Rename temp file to labview.ini
+rem Rename temp file to labview.ini
 ren labview_temp.ini labview.ini
 
-@ Append neccessary modified settings to labview.ini
+rem Append neccessary modified settings to labview.ini
 echo autoLayoutBlockPaddingX=20 >> labview.ini
 echo autoLayoutBlockPaddingY=30 >> labview.ini
 echo autoLayoutWirePaddingX=15 >> labview.ini
